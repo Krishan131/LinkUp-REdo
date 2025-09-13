@@ -1,0 +1,93 @@
+/* Main App Styles - Dating App Theme */
+.main-app-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff6b9d 0%, #c44569 50%, #6c5ce7 100%);
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-app-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.main-app-header {
+  text-align: center;
+  margin-bottom: 30px;
+  color: white;
+  font-size: 32px;
+  font-weight: 700;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.main-app-nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.main-app-nav button {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.main-app-nav button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  background: white;
+}
+
+.main-app-nav button:active {
+  transform: translateY(0);
+}
+
+.main-app-nav button.active {
+  background: linear-gradient(135deg, #ff6b9d, #c44569);
+  color: white;
+}
+
+.main-app-view {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-height: 500px;
+}
+
+/* Responsive design for main app */
+@media (max-width: 768px) {
+  .main-app-container {
+    padding: 15px;
+  }
+
+  .main-app-header {
+    font-size: 28px;
+  }
+
+  .main-app-nav {
+    gap: 10px;
+  }
+
+  .main-app-nav button {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+
+  .main-app-view {
+    padding: 20px;
+  }
+}

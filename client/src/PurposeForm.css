@@ -1,0 +1,108 @@
+/* Purpose Form Styles - Dating App Theme */
+.purpose-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.purpose-form-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 28px;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.purpose-form-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.purpose-form-input,
+.purpose-form-textarea {
+  width: 100%;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  border: 2px solid #e1e5e9;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.8);
+  box-sizing: border-box;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.purpose-form-input:focus,
+.purpose-form-textarea:focus {
+  outline: none;
+  border-color: #ff6b9d;
+  box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
+  background: white;
+}
+
+.purpose-form-button {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #ff6b9d, #c44569);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.purpose-form-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
+}
+
+.purpose-form-button:active {
+  transform: translateY(0);
+}
+
+.purpose-form-message {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.purpose-form-message.success {
+  background: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.purpose-form-message.error {
+  background: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.2);
+}
+
+/* Responsive design for purpose form */
+@media (max-width: 480px) {
+  .purpose-form-container {
+    margin: 20px;
+    padding: 30px 20px;
+  }
+
+  .purpose-form-title {
+    font-size: 24px;
+  }
+}
