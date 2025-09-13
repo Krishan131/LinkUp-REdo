@@ -18,6 +18,8 @@
     "better-sqlite3": "^12.2.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
+    "mongodb": "^6.19.0",
+    "mongoose": "^8.18.1",
     "multer": "^2.0.2",
     "ws": "^8.18.3"
   }
