@@ -1,0 +1,59 @@
+.purpose-swiper-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.purpose-card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease-in-out;
+}
+
+.purpose-card.swipe-left {
+  transform: translateX(-100%);
+}
+
+.purpose-card.swipe-right {
+  transform: translateX(100%);
+}
+
+.purpose-card.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.swipe-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.swipe-button.left {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.swipe-button.left:hover {
+  background-color: #ff5252;
+}
+
+.swipe-button.right {
+  background-color: #4ecdc4;
+  color: white;
+}
+
+.swipe-button.right:hover {
+  background-color: #45b7aa;
+}

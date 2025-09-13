@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import './PurposeSwiper.css';
 
 function PurposeSwiper({ userId }) {
     const [purposes, setPurposes] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [message, setMessage] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    const [swipeDirection, setSwipeDirection] = useState(null);
 
     useEffect(() => {
         const fetchPurposes = async () => {
@@ -57,6 +59,7 @@ function PurposeSwiper({ userId }) {
     // Updated: Function to handle a "swipe left"
     const handleSwipeLeft = async () => {
         if (!currentPurpose) return;
+        setSwipeDirection('left');
         try {
             const response = await fetch('http://localhost:5000/api/purpose/swipe-left', {
                 method: 'POST',
@@ -68,13 +71,17 @@ function PurposeSwiper({ userId }) {
         } catch (error) {
             console.error('Error swiping left:', error);
         } finally {
-            moveNext(); // <--- Call our new function to remove the purpose and advance
+            setTimeout(() => {
+                setSwipeDirection(null);
+                moveNext(); // <--- Call our new function to remove the purpose and advance
+            }, 500);
         }
     };
 
     // Updated: Function to handle a "swipe right"
     const handleSwipeRight = async () => {
         if (!currentPurpose) return;
+        setSwipeDirection('right');
         try {
             const response = await fetch('http://localhost:5000/api/purpose/swipe-right', {
                 method: 'POST',
@@ -86,7 +93,10 @@ function PurposeSwiper({ userId }) {
         } catch (error) {
             console.error('Error swiping right:', error);
         } finally {
-            moveNext(); // <--- Call our new function to remove the purpose and advance
+            setTimeout(() => {
+                setSwipeDirection(null);
+                moveNext(); // <--- Call our new function to remove the purpose and advance
+            }, 500);
         }
     };
 
@@ -96,13 +106,15 @@ function PurposeSwiper({ userId }) {
             {isLoading && <p>Loading...</p>}
             {!isLoading && message && <p>{message}</p>}
             {!isLoading && currentPurpose && (
-                <div style={{ border: '1px solid #ccc', padding: '20px', borderRadius: '8px' }}>
-                    <h3>{currentPurpose.title}</h3>
-                    <p>Posted by: {currentPurpose.username}</p>
-                    <p>{currentPurpose.description}</p>
-                    <div style={{ display: 'flex', gap: '10px' }}>
-                        <button onClick={handleSwipeLeft}>Swipe Left</button>
-                        <button onClick={handleSwipeRight}>Swipe Right</button>
+                <div className="purpose-swiper-container">
+                    <div className={`purpose-card ${swipeDirection === 'left' ? 'swipe-left' : swipeDirection === 'right' ? 'swipe-right' : ''}`}>
+                        <h3>{currentPurpose.title}</h3>
+                        <p>Posted by: {currentPurpose.username}</p>
+                        <p>{currentPurpose.description}</p>
+                        <div className="button-container">
+                            <button className="swipe-button left" onClick={handleSwipeLeft}>Swipe Left</button>
+                            <button className="swipe-button right" onClick={handleSwipeRight}>Swipe Right</button>
+                        </div>
                     </div>
                 </div>
             )}

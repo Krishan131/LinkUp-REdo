@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './MyInterests.css';
 
 function MyInterests({ userId }) {
     const [interests, setInterests] = useState([]);
@@ -56,14 +57,14 @@ function MyInterests({ userId }) {
             {isLoading && <p>Loading...</p>}
             {!isLoading && message && <p>{message}</p>}
             {!isLoading && interests.length > 0 && (
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+                <div className="interests-container">
                     {interests.map((interest) => (
-                        <div key={interest.purpose_id} style={{ border: '1px solid #ccc', padding: '10px', width: '200px' }}>
-                            <img src={interest.poster_image || 'https://via.placeholder.com/100'} alt={interest.poster_username} style={{ width: '100%', height: 'auto', marginBottom: '10px' }} />
+                        <div key={interest.purpose_id} className="interest-card">
+                            <img src={interest.poster_image ? `http://localhost:5000${interest.poster_image}` : 'https://via.placeholder.com/200'} alt={interest.poster_username} className="poster-image" onError={(e) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/200'; }} />
                             <strong>{interest.poster_username}</strong>
-                            <p style={{ fontSize: '0.9em', color: '#555' }}>{interest.poster_bio}</p>
-                            <p>Purpose: {interest.purpose_title}</p>
-                            <button onClick={() => handleAcceptMatch(interest.purpose_id, interest.poster_id)}>
+                            <p className="poster-bio">{interest.poster_bio}</p>
+                            <p className="purpose-title">Purpose: {interest.purpose_title}</p>
+                            <button onClick={() => handleAcceptMatch(interest.purpose_id, interest.poster_id)} className="accept-interest-button">
                                 Accept Match
                             </button>
                         </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './Inbox.css';
 
 function Inbox({ userId, onSelectChat }) {
     const [matches, setMatches] = useState([]);
@@ -35,14 +36,14 @@ function Inbox({ userId, onSelectChat }) {
             {isLoading && <p>Loading...</p>}
             {!isLoading && message && <p>{message}</p>}
             {!isLoading && matches.length > 0 && (
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+                <div className="inbox-container">
                     {matches.map((match) => (
-                        <div key={match.purpose_id} style={{ border: '1px solid #ccc', padding: '10px', width: '200px' }}>
-                            <img src={match.other_image || 'https://via.placeholder.com/100'} alt={match.other_username} style={{ width: '100%', height: 'auto', marginBottom: '10px' }} />
+                        <div key={match.purpose_id} className="inbox-card">
+                            <img src={match.other_image ? `http://localhost:5000${match.other_image}` : 'https://via.placeholder.com/200'} alt={match.other_username} className="profile-image" onError={(e) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/200'; }} />
                             <strong>{match.other_username}</strong>
-                            <p style={{ fontSize: '0.9em', color: '#555' }}>{match.other_bio}</p>
+                            <p className="user-bio">{match.other_bio}</p>
                             <p>Purpose: {match.purpose_title}</p>
-                            <button onClick={() => onSelectChat({ id: userId, username: 'you' }, { id: match.other_user_id, username: match.other_username })}>
+                            <button onClick={() => onSelectChat({ id: userId, username: 'you' }, { id: match.other_user_id, username: match.other_username })} className="open-chat-button">
                                 Open Chat
                             </button>
                         </div>

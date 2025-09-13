@@ -16,7 +16,7 @@ function ProfileView({ userId, onProfileUpdate }) {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/profile/${userId}`);
+            const response = await fetch(`/api/profile/${userId}`);
                 if (response.ok) {
                     const data = await response.json();
                     setProfile(data);
@@ -67,7 +67,7 @@ function ProfileView({ userId, onProfileUpdate }) {
             console.log('Sending PUT request to:', `http://localhost:5000/api/profile/${userId}`);
             console.log('FormData contents:', { username, bio, hasImage: !!selectedImage, hasImageUrl: !!profileImageUrl });
 
-            const response = await fetch(`http://localhost:5000/api/profile/${userId}`, {
+            const response = await fetch(`/api/profile/${userId}`, {
                 method: 'PUT',
                 body: formData,
             });

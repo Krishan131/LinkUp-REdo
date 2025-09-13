@@ -1,0 +1,81 @@
+/* Styles for Chat component */
+
+.back-button {
+    padding: 5px 10px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+}
+
+.chat-container {
+    border: 1px solid #ccc;
+    height: 300px;
+    overflow-y: scroll;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.message {
+    margin-bottom: 10px;
+}
+
+.message-right {
+    text-align: right;
+}
+
+.message-left {
+    text-align: left;
+}
+
+.sender-label {
+    font-size: 0.8em;
+    color: #666;
+    margin-bottom: 2px;
+}
+
+.message-bubble {
+    padding: 8px;
+    border-radius: 10px;
+    display: inline-block;
+    max-width: 70%;
+}
+
+.message-bubble-own {
+    background-color: #dcf8c6;
+}
+
+.message-bubble-other {
+    background-color: #fff;
+}
+
+.chat-form {
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.send-button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.send-button:hover {
+    background-color: #0056b3;
+}

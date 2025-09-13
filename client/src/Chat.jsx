@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import './Chat.css';
 
 function Chat({ senderId, receiverId, onBack }) {
     const [messages, setMessages] = useState([]);
@@ -70,34 +71,29 @@ function Chat({ senderId, receiverId, onBack }) {
 
     return (
         <div>
-            <button onClick={onBack}>Back to Matches</button>
+            <button onClick={onBack} className="back-button">Back to Matches</button>
             <h2>Chat</h2>
-            <div style={{ border: '1px solid #ccc', height: '300px', overflowY: 'scroll', padding: '10px', marginBottom: '10px' }}>
+            <div className="chat-container">
                 {messages.map((msg, index) => (
-                    <div key={index} style={{ textAlign: msg.senderId === senderId ? 'right' : 'left' }}>
-                        <div style={{ fontSize: '0.8em', color: '#666', marginBottom: '2px' }}>
+                    <div key={index} className={msg.senderId === senderId ? 'message message-right' : 'message message-left'}>
+                        <div className="sender-label">
                             {msg.senderId === senderId ? 'You' : msg.senderName || 'Other'}
                         </div>
-                        <p style={{
-                            backgroundColor: msg.senderId === senderId ? '#dcf8c6' : '#fff',
-                            padding: '8px',
-                            borderRadius: '10px',
-                            display: 'inline-block',
-                            maxWidth: '70%',
-                        }}>
+                        <p className={msg.senderId === senderId ? 'message-bubble message-bubble-own' : 'message-bubble message-bubble-other'}>
                             {msg.text}
                         </p>
                     </div>
                 ))}
             </div>
-            <form onSubmit={handleSend}>
+            <form onSubmit={handleSend} className="chat-form">
                 <input
                     type="text"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Type a message..."
+                    className="chat-input"
                 />
-                <button type="submit">Send</button>
+                <button type="submit" className="send-button">Send</button>
             </form>
         </div>
     );

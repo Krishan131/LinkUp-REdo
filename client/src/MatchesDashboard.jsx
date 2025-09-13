@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './MatchesDashboard.css';
 
 function MatchesDashboard({ userId, onSelectChat }) {
     const [matches, setMatches] = useState({});
@@ -91,17 +92,17 @@ function MatchesDashboard({ userId, onSelectChat }) {
             {!isLoading && Object.keys(matches).length > 0 && (
                 <div>
                     {Object.keys(matches).map((purposeId) => (
-                        <div key={purposeId} style={{ border: '1px solid #ddd', padding: '15px', marginBottom: '20px' }}>
+                        <div key={purposeId} className="purpose-card">
                             <h3>Purpose: {matches[purposeId].title}</h3>
                             <p>{matches[purposeId].description}</p>
                             <h4>Interested Users:</h4>
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+                            <div className="interested-users-container">
                                 {matches[purposeId].interestedUsers.map((user) => (
-                                    <div key={user.id} style={{ border: '1px solid #ccc', padding: '10px', width: '200px' }}>
-                                        <img src={user.profile_image_url || 'https://via.placeholder.com/100'} alt={user.username} style={{ width: '100%', height: 'auto', marginBottom: '10px' }} />
+                                    <div key={user.id} className="user-card">
+                                        <img src={user.profile_image_url ? `http://localhost:5000${user.profile_image_url}` : 'https://via.placeholder.com/200'} alt={user.username} className="profile-image" onError={(e) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/200'; }} />
                                         <strong>{user.username}</strong>
-                                        <p style={{ fontSize: '0.9em', color: '#555' }}>{user.bio}</p>
-                                        <button onClick={() => handleAcceptMatch(purposeId, user.id)}>
+                                        <p className="user-bio">{user.bio}</p>
+                                        <button onClick={() => handleAcceptMatch(purposeId, user.id)} className="accept-match-button">
                                             Accept Match
                                         </button>
                                     </div>
