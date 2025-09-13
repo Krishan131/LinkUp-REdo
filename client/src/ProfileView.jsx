@@ -64,7 +64,7 @@ function ProfileView({ userId, onProfileUpdate }) {
         }
 
         try {
-            console.log('Sending PUT request to:', `http://localhost:5000/api/profile/${userId}`);
+            console.log('Sending PUT request to:', `https://linkup-redo-2.onrender.com/api/profile/${userId}`);
             console.log('FormData contents:', { username, bio, hasImage: !!selectedImage, hasImageUrl: !!profileImageUrl });
 
             const response = await fetch(`https://linkup-redo-2.onrender.com/api/profile/${userId}`, {
