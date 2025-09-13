@@ -10,7 +10,7 @@ function Inbox({ userId, onSelectChat }) {
         const fetchMatches = async () => {
             setIsLoading(true);
             try {
-                const response = await fetch(`http://localhost:5000/api/accepted-matches?userId=${userId}`);
+                const response = await fetch(`https://linkup-redo-2.onrender.com/api/accepted-matches?userId=${userId}`);
                 const data = await response.json();
                 if (response.ok) {
                     setMatches(data);
@@ -39,7 +39,7 @@ function Inbox({ userId, onSelectChat }) {
                 <div className="inbox-container">
                     {matches.map((match) => (
                         <div key={match.purpose_id} className="inbox-card">
-                            <img src={match.other_image ? `http://localhost:5000${match.other_image}` : 'https://via.placeholder.com/200'} alt={match.other_username} className="profile-image" onError={(e) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/200'; }} />
+                            <img src={match.other_image ? `https://linkup-redo-2.onrender.com${match.other_image}` : 'https://via.placeholder.com/200'} alt={match.other_username} className="profile-image" onError={(e) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/200'; }} />
                             <strong>{match.other_username}</strong>
                             <p className="user-bio">{match.other_bio}</p>
                             <p>Purpose: {match.purpose_title}</p>

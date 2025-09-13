@@ -10,7 +10,7 @@ function MatchesDashboard({ userId, onSelectChat }) {
         const fetchMatches = async () => {
             setIsLoading(true);
             try {
-                const response = await fetch(`http://localhost:5000/api/my-purposes/interests?userId=${userId}`);
+                const response = await fetch(`https://linkup-redo-2.onrender.com/api/my-purposes/interests?userId=${userId}`);
                 const data = await response.json();
 
                 if (response.ok) {
@@ -52,7 +52,7 @@ function MatchesDashboard({ userId, onSelectChat }) {
 // NEW: Function to handle accepting an interested user
     const handleAcceptMatch = async (purposeId, interestedUserId) => {
         try {
-            const response = await fetch('http://localhost:5000/api/purpose/accept-interest', {
+            const response = await fetch('https://linkup-redo-2.onrender.com/api/purpose/accept-interest', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ function MatchesDashboard({ userId, onSelectChat }) {
                             <div className="interested-users-container">
                                 {matches[purposeId].interestedUsers.map((user) => (
                                     <div key={user.id} className="user-card">
-                                        <img src={user.profile_image_url ? `http://localhost:5000${user.profile_image_url}` : 'https://via.placeholder.com/200'} alt={user.username} className="profile-image" onError={(e) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/200'; }} />
+                                        <img src={user.profile_image_url ? `https://linkup-redo-2.onrender.com${user.profile_image_url}` : 'https://via.placeholder.com/200'} alt={user.username} className="profile-image" onError={(e) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/200'; }} />
                                         <strong>{user.username}</strong>
                                         <p className="user-bio">{user.bio}</p>
                                         <button onClick={() => handleAcceptMatch(purposeId, user.id)} className="accept-match-button">

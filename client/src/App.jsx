@@ -22,7 +22,7 @@ function Register({ onLoginClick }) {
       setMessage('');
   
       try {
-        const response = await fetch('http://localhost:5000/api/register', {
+        const response = await fetch('https://linkup-redo-2.onrender.com/api/register', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ function Login({ onRegisterClick, onLoginSuccess }) {
         setMessage('');
 
         try {
-            const response = await fetch('http://localhost:5000/api/login', {
+            const response = await fetch('https://linkup-redo-2.onrender.com/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -155,7 +155,7 @@ function App() {
             if (loggedInUser) {
                 setIsLoading(true);
                 try {
-                    const response = await fetch(`http://localhost:5000/api/profile/${loggedInUser.id}`);
+                    const response = await fetch(`https://linkup-redo-2.onrender.com/api/profile/${loggedInUser.id}`);
                     if (response.ok) {
                         setHasProfile(true);
                     } else {
@@ -174,7 +174,7 @@ function App() {
 
     useEffect(() => {
         if (loggedInUser) {
-            const websocket = new WebSocket('ws://localhost:5000');
+            const websocket = new WebSocket('wss://linkup-redo-2.onrender.com');
             websocket.onopen = () => {
                 websocket.send(JSON.stringify({ type: 'auth', userId: loggedInUser.id }));
             };
@@ -198,7 +198,7 @@ function App() {
     const refreshUserData = async () => {
         if (loggedInUser) {
             try {
-                const response = await fetch(`http://localhost:5000/api/profile/${loggedInUser.id}`);
+                const response = await fetch(`https://linkup-redo-2.onrender.com/api/profile/${loggedInUser.id}`);
                 if (response.ok) {
                     const profileData = await response.json();
                     setLoggedInUser({ ...loggedInUser, username: profileData.username });

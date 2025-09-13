@@ -11,7 +11,7 @@ function CreatePurposeForm({ userId, onPurposeCreated }) {
         setMessage('');
 
         try {
-            const response = await fetch('http://localhost:5000/api/purpose/create', {
+            const response = await fetch('https://linkup-redo-2.onrender.com/api/purpose/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

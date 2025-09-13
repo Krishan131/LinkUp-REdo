@@ -16,14 +16,14 @@ function ProfileView({ userId, onProfileUpdate }) {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-            const response = await fetch(`/api/profile/${userId}`);
+            const response = await fetch(`https://linkup-redo-2.onrender.com/api/profile/${userId}`);
                 if (response.ok) {
                     const data = await response.json();
                     setProfile(data);
                     setUsername(data.username || '');
                     setBio(data.bio || '');
                     setProfileImageUrl(data.profile_image_url || '');
-                    setImagePreview(data.profile_image_url ? `http://localhost:5000${data.profile_image_url}` : null);
+                    setImagePreview(data.profile_image_url ? `https://linkup-redo-2.onrender.com${data.profile_image_url}` : null);
                 } else {
                     setError('Profile not found. Please complete your profile first.');
                 }
@@ -67,7 +67,7 @@ function ProfileView({ userId, onProfileUpdate }) {
             console.log('Sending PUT request to:', `http://localhost:5000/api/profile/${userId}`);
             console.log('FormData contents:', { username, bio, hasImage: !!selectedImage, hasImageUrl: !!profileImageUrl });
 
-            const response = await fetch(`/api/profile/${userId}`, {
+            const response = await fetch(`https://linkup-redo-2.onrender.com/api/profile/${userId}`, {
                 method: 'PUT',
                 body: formData,
             });
@@ -151,7 +151,7 @@ function ProfileView({ userId, onProfileUpdate }) {
                     <div className="profile-view-photo">
                         {profile.profile_image_url ? (
                             <img
-                                src={`http://localhost:5000${profile.profile_image_url}`}
+                                src={`https://linkup-redo-2.onrender.com${profile.profile_image_url}`}
                                 alt="Profile"
                                 className="profile-view-image"
                             />

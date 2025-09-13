@@ -35,7 +35,7 @@ function ProfileForm({ userId, onProfileSaved }) {
                 formData.append('profile_image_url', profileImageUrl);
             }
 
-            const response = await fetch('http://localhost:5000/api/profile', {
+            const response = await fetch('https://linkup-redo-2.onrender.com/api/profile', {
                 method: 'POST',
                 body: formData, // Remove Content-Type header to let browser set it with boundary
             });

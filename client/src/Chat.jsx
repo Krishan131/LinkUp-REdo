@@ -14,7 +14,7 @@ function Chat({ senderId, receiverId, onBack }) {
 
         const fetchChatHistory = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/chat/history?user1Id=${senderId}&user2Id=${receiverId}`);
+                const response = await fetch(`https://linkup-redo-2.onrender.com/api/chat/history?user1Id=${senderId}&user2Id=${receiverId}`);
                 if (response.ok) {
                     const history = await response.json();
                     setMessages(history);
@@ -26,7 +26,7 @@ function Chat({ senderId, receiverId, onBack }) {
 
         fetchChatHistory();
 
-        ws.current = new WebSocket(`ws://localhost:5000`);
+        ws.current = new WebSocket(`wss://linkup-redo-2.onrender.com`);
 
         ws.current.onopen = () => {
             ws.current.send(JSON.stringify({

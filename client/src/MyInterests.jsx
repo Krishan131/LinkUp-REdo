@@ -10,7 +10,7 @@ function MyInterests({ userId }) {
         const fetchInterests = async () => {
             setIsLoading(true);
             try {
-                const response = await fetch(`http://localhost:5000/api/my-interests?userId=${userId}`);
+                const response = await fetch(`https://linkup-redo-2.onrender.com/api/my-interests?userId=${userId}`);
                 const data = await response.json();
                 if (response.ok) {
                     setInterests(data);
@@ -32,7 +32,7 @@ function MyInterests({ userId }) {
 
     const handleAcceptMatch = async (purposeId, posterId) => {
         try {
-            const response = await fetch('http://localhost:5000/api/match/accept', {
+            const response = await fetch('https://linkup-redo-2.onrender.com/api/match/accept', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ function MyInterests({ userId }) {
                 <div className="interests-container">
                     {interests.map((interest) => (
                         <div key={interest.purpose_id} className="interest-card">
-                            <img src={interest.poster_image ? `http://localhost:5000${interest.poster_image}` : 'https://via.placeholder.com/200'} alt={interest.poster_username} className="poster-image" onError={(e) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/200'; }} />
+                            <img src={interest.poster_image ? `https://linkup-redo-2.onrender.com${interest.poster_image}` : 'https://via.placeholder.com/200'} alt={interest.poster_username} className="poster-image" onError={(e) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/200'; }} />
                             <strong>{interest.poster_username}</strong>
                             <p className="poster-bio">{interest.poster_bio}</p>
                             <p className="purpose-title">Purpose: {interest.purpose_title}</p>

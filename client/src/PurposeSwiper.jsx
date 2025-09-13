@@ -12,7 +12,7 @@ function PurposeSwiper({ userId }) {
         const fetchPurposes = async () => {
             setIsLoading(true);
             try {
-                const response = await fetch(`http://localhost:5000/api/purposes?userId=${userId}`);
+                const response = await fetch(`https://linkup-redo-2.onrender.com/api/purposes?userId=${userId}`);
                 const data = await response.json();
                 if (response.ok) {
                     setPurposes(data);
@@ -61,7 +61,7 @@ function PurposeSwiper({ userId }) {
         if (!currentPurpose) return;
         setSwipeDirection('left');
         try {
-            const response = await fetch('http://localhost:5000/api/purpose/swipe-left', {
+            const response = await fetch('https://linkup-redo-2.onrender.com/api/purpose/swipe-left', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userId, purposeId: currentPurpose.id }),
@@ -83,7 +83,7 @@ function PurposeSwiper({ userId }) {
         if (!currentPurpose) return;
         setSwipeDirection('right');
         try {
-            const response = await fetch('http://localhost:5000/api/purpose/swipe-right', {
+            const response = await fetch('https://linkup-redo-2.onrender.com/api/purpose/swipe-right', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userId, purposeId: currentPurpose.id }),
